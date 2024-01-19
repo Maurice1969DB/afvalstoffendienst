@@ -2,7 +2,6 @@ import io
 
 from flask import Flask, request, send_file, render_template
 from flask_cors import CORS
-import locale
 
 import requests
 from bs4 import BeautifulSoup
@@ -13,7 +12,30 @@ import pytz
 app = Flask(__name__)
 CORS(app)
 
+maanden_nl_naar_en = {
+    "januari": "January",
+    "februari": "February",
+    "maart": "March",
+    "april": "April",
+    "mei": "May",
+    "juni": "June",
+    "juli": "July",
+    "augustus": "August",
+    "september": "September",
+    "oktober": "October",
+    "november": "November",
+    "december": "December",
+}
 
+dagen_nl_naar_en = {
+    "maandag": "Monday",
+    "dinsdag": "Tuesday",
+    "woensdag": "Wednesday",
+    "donderdag": "Thursday",
+    "vrijdag": "Friday",
+    "zaterdag": "Saturday",
+    "zondag": "Sunday",
+}
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -31,7 +53,6 @@ def generate_calendar():
     kalender_url = 'https://www.afvalstoffendienst.nl/afvalkalender'
 
     current_year = datetime.now().year
-    locale.setlocale(locale.LC_TIME, 'nl_NL')
 
     # Inloggegevens
     login_data = {
@@ -62,6 +83,10 @@ def generate_calendar():
                         ophaaldagen_ps = div.find_all('p')
                         for p in ophaaldagen_ps:
                             datum_text = p.get_text().split('\n')[0] + f" {current_year}"
+                            for nl, en in maanden_nl_naar_en.items():
+                                datum_text = datum_text.replace(nl, en)
+                            for nl, en in dagen_nl_naar_en.items():
+                                datum_text = datum_text.replace(nl, en)
                             afval_type = p.find('span', class_='afvaldescr').get_text(strip=True)
                             kalender_data.append({'datum': datum_text, 'afvaltype': afval_type})
 
