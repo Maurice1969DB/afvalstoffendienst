@@ -95,7 +95,3 @@ def generate_calendar():
                         mimetype='text/calendar',
                         download_name='calendar.ics'
                     )
-
-
-if __name__ == '__main__':
-    app.run()
