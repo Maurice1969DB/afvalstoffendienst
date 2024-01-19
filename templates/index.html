@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Maak Afvalkalender</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <h1>Genereer afvalkalender</h1>
+    <form action="/generate" method="post" id="kalenderForm">
+        Postcode: <input type="text" id="postcode" name="postcode"><br>
+        Huisnummer: <input type="text" id="huisnummer" name="huisnummer"><br>
+        Toevoeging: <input type="text" id="toevoeging" name="toevoeging"><br>
+        <input type="submit" value="Maak iCalendar">
+    </form>
+</body>
+</html>
