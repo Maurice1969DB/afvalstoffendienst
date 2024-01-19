@@ -2,14 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Genereer een iCal voor de afvalstoffendienstkalender.nl</title>
+    <title>Genereer een iCalendar voor de afvalstoffendienstkalender.nl</title>
         <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
 </head>
 <body>
-    <h1>Genereer een iCal voor de afvalstoffendienstkalender.nl</h1>
-        <p>Via deze site is het mogelijk om een iCal-bestand te genereren om te kunnen toevoegen aan een agenda.</p>
-        <p>De app van de afvalstoffendienst hoeft dan niet gebruikt te worden.</p>
+    <h1>Genereer een iCalendar voor de afvalstoffendienstkalender.nl</h1>
+        <p>Via deze site is het mogelijk om een iCalendar-bestand te genereren.<br>
+            Maak bij voorkeur eerst een nieuwe agenda (bijvoorbeeld: afvalkalender) en importeer het .ics-bestand in je agenda.
+        </p>
+    <p>Deze site is gemaakt om geen gebruik te hoeven maken van de afvalstoffendienst-app of -website om de ophaaldagen te kunnen zien.</p>
     <form action="/generate" method="post" id="kalenderForm">
         Postcode: <input type="text" id="postcode" name="postcode"><br>
         Huisnummer: <input type="text" id="huisnummer" name="huisnummer"><br>
@@ -18,6 +20,6 @@
     </form>
     <br>
     <br>
-    <footer>Er kunnen geen rechten worden ontleend aan het gebruik van deze app. Gebruik is op eigen risico.</footer>
+    <footer>Er kunnen geen rechten worden ontleend aan het gebruik van deze website. Gebruik is op eigen risico.</footer>
 </body>
 </html>
