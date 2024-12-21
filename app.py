@@ -82,7 +82,7 @@ def generate_calendar():
                     for div in ophaaldagen_divs:
                         ophaaldagen_ps = div.find_all('p')
                         for p in ophaaldagen_ps:
-                            datum_text = p.get_text().split('\n')[0] + f" {current_year}"
+                            datum_text = p.get_text().split('\n')[0]
                             for nl, en in maanden_nl_naar_en.items():
                                 datum_text = datum_text.replace(nl, en)
                             for nl, en in dagen_nl_naar_en.items():
@@ -97,6 +97,8 @@ def generate_calendar():
 
                     # Timezone voor de datums
                     timezone = pytz.timezone("Europe/Amsterdam")
+
+                    print(kalender_data)
 
                     for item in kalender_data:
                         event = Event()
