@@ -102,7 +102,7 @@ def generate_calendar():
 
                     for item in kalender_data:
                         event = Event()
-                        event_date = datetime.strptime(item['datum'], '%A %d %B %Y').date()
+                        event_date = datetime.strptime(item['datum'], '%A %d %B').date()
                         event_date_end = event_date + timedelta(days=1)
 
                         event.add('summary', item['afvaltype'])
@@ -122,3 +122,6 @@ def generate_calendar():
                         mimetype='text/calendar',
                         download_name='calendar.ics'
                     )
+
+if __name__ == '__main__':
+    app.run()
